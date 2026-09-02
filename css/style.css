@@ -1,0 +1,240 @@
+/* WordCracker - basic layout */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: 'Komika', system-ui, sans-serif;
+}
+
+@font-face {
+  font-family: 'Komika';
+  src: url('../assets/fonts/komika.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#game-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background: #000;
+}
+
+#game-container:fullscreen,
+#game-container:-webkit-full-screen {
+  max-width: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#gameCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+/* Start screen */
+#startScreen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  text-shadow: 0 0 8px #000, 0 0 4px #000;
+  z-index: 10;
+}
+
+#startTitle {
+  font-size: clamp(2.4rem, 12vw, 3.6rem);
+  letter-spacing: 0.04em;
+}
+
+#startEmail {
+  font-size: clamp(0.95rem, 4vw, 1.15rem);
+  opacity: 0.9;
+  color: #8ec8ff;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+#startEmail:hover,
+#startEmail:active {
+  color: #c5e2ff;
+  text-decoration: underline;
+}
+
+#startButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 0.6rem;
+  width: min(80%, 280px);
+}
+
+#startButtons button {
+  font-family: inherit;
+  font-size: clamp(1.2rem, 5vw, 1.55rem);
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+}
+
+#newGameButton {
+  background: #2a6a2a;
+  box-shadow: 0 4px 0 #1a4a1a;
+}
+
+#newGameButton:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #1a4a1a;
+}
+
+#continueButton {
+  background: #2a4a7a;
+  box-shadow: 0 4px 0 #1a2a4a;
+}
+
+#continueButton:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #1a2a4a;
+}
+
+#continueButton:disabled {
+  opacity: 0.35;
+  cursor: default;
+  box-shadow: none;
+}
+
+#startVersion {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  font-size: 0.75rem;
+  opacity: 0.55;
+  letter-spacing: 0.06em;
+}
+
+/* Overlay / HUD */
+#overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: #fff;
+  text-shadow: 0 0 6px #000, 0 0 4px #000;
+}
+
+#overlay > * {
+  pointer-events: auto;
+}
+
+#ol_score {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font-size: 1.4rem;
+}
+
+#ol_time {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 1.4rem;
+}
+
+#ol_levelScore {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.8rem;
+  font-weight: bold;
+}
+
+#ol_numWords {
+  position: absolute;
+  top: 42px;
+  left: 10px;
+  font-size: 1.3rem;
+}
+
+#ol_bonus {
+  position: absolute;
+  top: 42px;
+  right: 10px;
+  font-size: 1.3rem;
+}
+
+#ol_wordList {
+  position: absolute;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  min-width: 100px;
+  max-width: calc(100% - 24px);
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 8px 14px;
+  max-height: 70px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+}
+
+#ol_buttonGroup {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#ol_buttonGroup button {
+  font-family: inherit;
+  font-size: 1.05rem;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #2a2a2a;
+  color: #fff;
+  cursor: pointer;
+}
+
+#ol_buttonGroup button:active {
+  background: #444;
+}
+
+#ol_levelNum {
+  position: absolute;
+  bottom: 12px;
+  left: 16px;
+  font-size: 3.5rem;
+  opacity: 0.7;
+}
+
+.hidden {
+  display: none !important;
+}

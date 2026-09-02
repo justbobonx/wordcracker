@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>WordCracker</title>
+  <link rel="icon" href="assets/images/icon.png" type="image/png">
+  <script>
+    window.VERSION = '0.6.17';
+    document.write('<link rel="stylesheet" href="css/style.css?v=' + window.VERSION + '">');
+  </script>
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="startScreen">
+      <div id="startTitle">WordCracker</div>
+      <a id="startEmail" href="https://x.com/just_bob" target="_blank" rel="noopener noreferrer">just_bob@X.com</a>
+      <div id="startButtons">
+        <button id="newGameButton">NEW GAME</button>
+        <button id="continueButton" class="hidden" disabled>CONTINUE</button>
+      </div>
+      <div id="startVersion"></div>
+    </div>
+
+    <div id="overlay" class="hidden">
+      <div id="ol_score">SCORE: 0</div>
+      <div id="ol_time">TIME: 0:00</div>
+      <div id="ol_levelScore" class="hidden">00</div>
+      <div id="ol_numWords">0(0)/0</div>
+      <div id="ol_bonus">x1.00</div>
+
+      <div id="ol_wordList"> &nbsp; </div>
+
+      <div id="ol_buttonGroup">
+        <button id="ol_nextButton" class="hidden">NEXT LEVEL</button>
+        <button id="ol_giveupButton">give up</button>
+        <button id="ol_clearButton">clear</button>
+        <button id="ol_hintButton">hint</button>
+      </div>
+
+      <div id="ol_levelNum">0</div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('startVersion').textContent = 'v' + window.VERSION;
+    [
+      'js/Coord.js',
+      'js/GfxState.js',
+      'js/BitmapManager.js',
+      'js/Sprite.js',
+      'js/LetterList.js',
+      'js/Letter.js',
+      'js/LetterGrid.js',
+      'js/ColorWheel.js',
+      'js/LevelBuilder.js',
+      'js/WordInput.js',
+      'js/WordBoard.js',
+      'js/GameSave.js',
+      'js/GameView.js',
+      'js/WordCracker.js',
+      'js/main.js'
+    ].forEach(function (src) {
+      document.write('<script src="' + src + '?v=' + window.VERSION + '"><\/script>');
+    });
+  </script>
+</body>
+</html>
